@@ -1,0 +1,39 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.4.0",
+  "scripts": {
+    "build": "nr --filter eslint-formatter-i build",
+    "build:client": "nr --filter client-app build",
+    "dev": "nr --filter eslint-formatter-i dev",
+    "lint": "eslint --cache .",
+    "prepublishOnly": "nr --filter eslint-formatter-i build",
+    "release": "bumpp -r && pnpm -r publish",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepare": "simple-git-hooks",
+    "start": "eslint fixtures -f i"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:dev",
+    "@antfu/ni": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "bumpp": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-formatter-i": "workspace:*",
+    "lint-staged": "catalog:dev",
+    "pnpm": "catalog:dev",
+    "simple-git-hooks": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "tsx": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vitest": "catalog:dev"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
