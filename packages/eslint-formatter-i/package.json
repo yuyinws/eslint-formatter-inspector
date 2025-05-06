@@ -11,7 +11,11 @@
     "url": "git+https://github.com/yuyinws/eslint-formatter-i.git"
   },
   "bugs": "https://github.com/yuyinws/eslint-formatter-i/issues",
-  "keywords": ["eslint-formatter", "eslint", "formatter"],
+  "keywords": [
+    "eslint-formatter",
+    "eslint",
+    "formatter"
+  ],
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.js"
@@ -27,7 +31,9 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "h3": "catalog:dependencies",
-    "pathe": "catalog:dependencies"
+    "get-port-please": "^3.1.2",
+    "h3": "npm:h3-nightly@2x",
+    "mrmime": "^2.0.1",
+    "pathe": "^2.0.3"
   }
 }

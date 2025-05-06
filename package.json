@@ -2,33 +2,33 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.4.0",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "build": "nr --filter eslint-formatter-i build",
     "build:client": "nr --filter client-app build",
     "dev": "nr --filter eslint-formatter-i dev",
+    "dev:client": "nr --filter client-app dev",
     "lint": "eslint --cache .",
     "prepublishOnly": "nr --filter eslint-formatter-i build",
     "release": "bumpp -r && pnpm -r publish",
-    "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
-    "start": "eslint fixtures -f i"
+    "test": "eslint -c eslint.fixtrues.config.js -f i fixtures"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:dev",
-    "@antfu/ni": "catalog:dev",
-    "@types/node": "catalog:dev",
-    "bumpp": "catalog:dev",
-    "eslint": "catalog:dev",
+    "@antfu/eslint-config": "^4.12.1",
+    "@antfu/ni": "^24.3.0",
+    "@types/node": "^22.15.12",
+    "bumpp": "^10.1.0",
+    "eslint": "^9.26.0",
     "eslint-formatter-i": "workspace:*",
-    "lint-staged": "catalog:dev",
-    "pnpm": "catalog:dev",
-    "simple-git-hooks": "catalog:dev",
-    "tsdown": "catalog:dev",
-    "tsx": "catalog:dev",
-    "typescript": "catalog:dev",
-    "vitest": "catalog:dev"
+    "eslint-formatter-mo": "^2.3.0",
+    "lint-staged": "^15.5.1",
+    "pnpm": "^10.10.0",
+    "simple-git-hooks": "^2.13.0",
+    "tsdown": "^0.11.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

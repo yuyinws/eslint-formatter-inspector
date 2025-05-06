@@ -34,5 +34,6 @@
     "json",
     "jsonc",
     "yaml"
-  ]
+  ],
+  "references.preferredLocation": "peek"
 }

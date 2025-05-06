@@ -1,0 +1,25 @@
+.shiki code,
+.shiki kbd,
+.shiki samp,
+.shiki pre {
+  font-family: var(--font-family);
+  @apply text-sm;
+  cursor: pointer;
+}
+
+.shiki:hover {
+  text-decoration: underline;
+}
+
+html[data-webtui-theme="nord"] .shiki,
+html[data-webtui-theme="nord"] .shiki span,
+html[data-webtui-theme="catppuccin"] .shiki,
+html[data-webtui-theme="catppuccin"] .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--background0) !important;
+}
+
+html[data-webtui-theme="light"] .shiki,
+html[data-webtui-theme="light"] .shiki span {
+  background-color: var(--background0) !important;
+}

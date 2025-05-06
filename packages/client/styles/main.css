@@ -1,0 +1,75 @@
+@layer base, utils, components;
+
+@import "@webtui/css";
+@import "@/styles/flexbox.css";
+@import "@/styles/spacing.css";
+@import "tailwindcss";
+@import "@/styles/shiki.css";
+
+
+@import '@webtui/theme-catppuccin';
+@import '@webtui/theme-nord';
+
+@custom-variant dark (&:where([data-webtui-theme=catppuccin], [data-webtui-theme=catppuccin] *));
+
+@font-face {
+  font-family: "MapleMono";
+  src: url("/fonts/MapleMono-NF-Bold.ttf") format("truetype");
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "MapleMono";
+  src: url("/fonts/MapleMono-NF-BoldItalic.ttf") format("truetype");
+  font-stretch: normal;
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "MapleMono";
+  src: url("/fonts/MapleMono-NF-Italic.ttf") format("truetype");
+  font-stretch: normal;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "MapleMono";
+  src: url("/fonts/MapleMono-NF-Regular.ttf") format("truetype");
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@layer base {
+  :root {
+    --font-family: "MapleMono", Menlo, Monaco, monospace;
+    --font-size: 18px;
+    --line-height: 1.4;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--foreground1);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+
+
+main,
+header {
+  --box-border-color: var(--background2);
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
