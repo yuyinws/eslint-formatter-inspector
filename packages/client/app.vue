@@ -43,6 +43,10 @@ function getCodeFromSource(source: string, line: number) {
 function calculateErrorHeight(messages: Linter.LintMessage[]) {
   return `${messages.length * 3}em`
 }
+
+function launch(file: string) {
+  $fetch(`/api/launch?file=${file}`)
+}
 </script>
 
 <template>
@@ -59,7 +63,7 @@ function calculateErrorHeight(messages: Linter.LintMessage[]) {
       </div>
     </div>
 
-    <section v-for="result in filteredResults" :key="result.relativePath" box-="square contain:!top" class="m-[1ch] result-box">
+    <section v-for="result in filteredResults" :key="result.relativePath" box-="square contain:!top" class="m-[1ch] result-box" @click="launch(result.filePath)">
       <div class="flex justify-between">
         <FileBadge :relative-path="result.relativePath" :full-path="result.filePath" :ext="result.ext" />
         <div is-="badge" variant-="background0">
@@ -74,11 +78,13 @@ function calculateErrorHeight(messages: Linter.LintMessage[]) {
           {{ line }}:
         </div>
         <div class="leading-none w-full">
-          <Shiki :code="getCodeFromSource(result.source!, line)" />
+          <Shiki
+            :code="getCodeFromSource(result.source!, line)" @click.stop="launch(`${result.filePath}:${line}`)"
+          />
 
           <div class="text-sm relative w-screen" :style="{ minHeight: calculateErrorHeight(messages) }">
             <template v-for="(message, index) in messages" :key="message.column">
-              <div :style="{ left: `${message.column - 1}ch` }" class="absolute w-full dark:text-gray-600 text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 group">
+              <div :style="{ left: `${message.column - 1}ch` }" class="absolute w-full dark:text-gray-500 text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 group">
                 <div class="w-full">
                   ↑
                 </div>

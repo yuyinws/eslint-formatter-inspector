@@ -5,12 +5,10 @@
 @import "@/styles/spacing.css";
 @import "tailwindcss";
 @import "@/styles/shiki.css";
-
-
 @import '@webtui/theme-catppuccin';
 @import '@webtui/theme-nord';
 
-@custom-variant dark (&:where([data-webtui-theme=catppuccin], [data-webtui-theme=catppuccin] *));
+@custom-variant dark (&:where([data-webtui-theme=catppuccin], [data-webtui-theme=catppuccin] *, [data-webtui-theme=nord], [data-webtui-theme=nord] *));
 
 @font-face {
   font-family: "MapleMono";

@@ -1,11 +1,15 @@
+/* eslint-disable no-console */
 import type { ESLint, Linter } from 'eslint'
 import { readFile, stat } from 'node:fs/promises'
 import { cwd } from 'node:process'
 import { fileURLToPath } from 'node:url'
+import c from 'ansis'
 import { getPort } from 'get-port-please'
-import { H3, serve, serveStatic } from 'h3'
+import { getQuery, H3, serve, serveStatic } from 'h3'
+import launch from 'launch-editor'
 import { lookup } from 'mrmime'
 import { dirname, extname, join, relative, resolve } from 'pathe'
+import { MARK_INFO } from './constants'
 
 export function processESLintResults(result: ESLint.LintResult[]) {
   return result.map((item) => {
@@ -38,6 +42,24 @@ async function formatter(result: ESLint.LintResult[]): Promise<void> {
     return processESLintResults(result)
   })
 
+  app.use('/api/launch', async (event) => {
+    try {
+      const query = getQuery(event)
+      if (query.file) {
+        launch(query.file)
+        return {
+          status: 'success',
+        }
+      }
+    }
+    catch (error) {
+      return {
+        status: 'error',
+        error: String(error),
+      }
+    }
+  })
+
   app.use('/**', (event) => {
     return serveStatic(event, {
       indexNames: ['/index.html'],
@@ -58,7 +80,9 @@ async function formatter(result: ESLint.LintResult[]): Promise<void> {
 
   const port = await getPort({ port: 3777, portRange: [3777, 4000] })
 
-  serve(app, { port })
+  serve(app, { port, silent: true })
+
+  console.log(MARK_INFO, `Starting ESLint formatter inspector at`, c.green`http://localhost:${port}`, '\n')
 }
 
 export default formatter

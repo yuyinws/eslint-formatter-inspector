@@ -28,11 +28,13 @@
     "build": "tsdown",
     "dev": "tsdown --watch",
     "prepublishOnly": "nr build",
-    "start": "tsx src/index.ts"
+    "start": "tsx src/test.ts"
   },
   "dependencies": {
+    "ansis": "^3.17.0",
     "get-port-please": "^3.1.2",
     "h3": "npm:h3-nightly@2x",
+    "launch-editor": "^2.10.0",
     "mrmime": "^2.0.1",
     "pathe": "^2.0.3"
   }
