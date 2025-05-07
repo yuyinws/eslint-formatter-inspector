@@ -12,6 +12,18 @@ import { dirname, extname, join, relative, resolve } from 'pathe'
 import { MARK_INFO } from './constants'
 
 export function processESLintResults(result: ESLint.LintResult[]) {
+  result = result.filter(item => item.errorCount > 0 || item.warningCount > 0)
+
+  result.sort((a, b) => {
+    if (a.errorCount !== b.errorCount) {
+      return b.errorCount - a.errorCount
+    }
+    if (a.warningCount !== b.warningCount) {
+      return b.warningCount - a.warningCount
+    }
+    return a.filePath.localeCompare(b.filePath)
+  })
+
   return result.map((item) => {
     const relativePath = relative(cwd(), item.filePath)
     const ext = extname(relativePath)
