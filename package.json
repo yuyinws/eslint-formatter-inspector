@@ -11,8 +11,8 @@
     "lint": "eslint --cache .",
     "prepublishOnly": "nr --filter eslint-formatter-i build",
     "release": "bumpp -r && pnpm -r publish",
-    "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks",
+    "typecheck": "vue-tsc --noEmit",
+    "prepare": "nr --filter client-app postinstall && npx simple-git-hooks",
     "test": "eslint -c eslint.fixtures.config.js -f i tests/fixtures"
   },
   "devDependencies": {
@@ -28,7 +28,8 @@
     "simple-git-hooks": "^2.13.0",
     "tsdown": "^0.11.0",
     "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vue-tsc": "^2.2.10"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
