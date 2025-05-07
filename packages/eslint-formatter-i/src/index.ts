@@ -34,7 +34,7 @@ async function formatter(result: ESLint.LintResult[]): Promise<void> {
 
   const clientDir = resolve(dirname(fileURLToPath(import.meta.url)), './client/public')
 
-  app.use('/payload.json', () => {
+  app.use('/api/payload.json', () => {
     return processESLintResults(result)
   })
 

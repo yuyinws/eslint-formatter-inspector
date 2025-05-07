@@ -13,7 +13,7 @@
     "release": "bumpp -r && pnpm -r publish",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
-    "test": "eslint -c eslint.fixtrues.config.js -f i fixtures"
+    "test": "eslint -c eslint.fixtures.config.js -f i tests/fixtures"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.12.1",

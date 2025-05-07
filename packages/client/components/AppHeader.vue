@@ -15,8 +15,8 @@ function toggleTheme(name: Theme) {
 
 <template>
   <header box-="square" class="flex justify-between items-center px-[2ch]">
-    <a href="https://eslint.org/docs/latest/extend/custom-formatters" target="_blank">
-      <span style="font-weight: bold;font-size: 24px;">&#xe7d2; ESLint</span> Formatter Inspector &#xf002;
+    <a href="https://github.com/yuyinws/eslint-formatter-inspector" target="_blank">
+      <span class="font-bold">&#xe7d2; ESLint</span> Formatter Inspector
     </a>
 
     <div id="theme-switcher">

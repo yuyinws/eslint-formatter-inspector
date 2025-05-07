@@ -8,24 +8,28 @@ const { relativePath, ext } = defineProps<{
 const fileIcon = computed(() => {
   switch (ext) {
     case '.ts':
-      return ' '
+      return `&#xe69d;`
+    case '.tsx':
+      return `&#xe69d;`
     case '.js':
-      return ' '
+      return `&#xf2ee;`
+    case '.jsx':
+      return `&#xf2ee;`
     case '.vue':
-      return ' '
+      return `&#xe6a0;`
     case '.json':
-      return ' '
+      return `&#xeb0f;`
+    case '.svelte':
+      return `&#xe8b7;`
     default:
-      return '󰈔 '
+      return `&#xf15b;`
   }
 })
 </script>
 
 <template>
-  <a is-="badge" variant-="background1" tabindex="0">
-    <span class="mr-[1.5ch]">
-      {{ fileIcon }}
-    </span>
+  <a is-="badge" variant-="background1">
+    <span class="mr-[1.5ch]" v-html="fileIcon" />
 
     <span>{{ relativePath }}</span>
   </a>
