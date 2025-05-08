@@ -21,6 +21,19 @@ export default defineNuxtConfig({
         'data-webtui-theme': 'catppuccin',
       },
       title: 'ESLint Formatter Inspector',
+      meta: [
+        {
+          name: 'description',
+          content: 'An interactive tool to inspect ESLint formatter on the browser.',
+        },
+      ],
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/svg+xml',
+          href: '/favicon.svg',
+        },
+      ],
     },
   },
   vite: {
