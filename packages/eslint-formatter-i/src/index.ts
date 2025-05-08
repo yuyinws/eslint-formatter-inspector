@@ -9,6 +9,7 @@ import { getPort } from 'get-port-please'
 import { getQuery, H3, serve, serveStatic } from 'h3'
 import launch from 'launch-editor'
 import { lookup } from 'mrmime'
+import open from 'open'
 import { dirname, extname, join, relative, resolve } from 'pathe'
 
 export function processESLintResults(result: ESLint.LintResult[]) {
@@ -110,6 +111,7 @@ async function formatter(result: ESLint.LintResult[]): Promise<void> {
     serve(app, { port, silent: true })
 
     consola.info(`Starting ESLint formatter inspector at`, c.green`http://localhost:${port}`, '\n')
+    open(`http://localhost:${port}`)
   }
 }
 

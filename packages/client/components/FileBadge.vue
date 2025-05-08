@@ -25,12 +25,21 @@ const fileIcon = computed(() => {
       return `&#xf15b;`
   }
 })
+
+const splitPath = computed(() => {
+  const pathArray = relativePath.split('/')
+  const last = pathArray.pop()
+  return {
+    rest: pathArray.join('/'),
+    last,
+  }
+})
 </script>
 
 <template>
   <a is-="badge" variant-="background1">
     <span class="mr-[1.5ch]" v-html="fileIcon" />
-
-    <span>{{ relativePath }}</span>
+    <span class="opacity-50">{{ splitPath.rest }}</span>
+    <span>/{{ splitPath.last }}</span>
   </a>
 </template>

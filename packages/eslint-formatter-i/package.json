@@ -37,6 +37,7 @@
     "h3": "npm:h3-nightly@2x",
     "launch-editor": "^2.10.0",
     "mrmime": "^2.0.1",
+    "open": "^10.1.2",
     "pathe": "^2.0.3"
   }
 }

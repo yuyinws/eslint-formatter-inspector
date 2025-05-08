@@ -32,6 +32,7 @@ const filteredResults = computed(() => {
   })
 })
 
+const totalFileCount = computed(() => filteredResults.value?.length ?? 0)
 const totalErrorCount = computed(() => filteredResults.value?.reduce((acc, result) => acc + result.errorCount, 0) ?? 0)
 const totalWarningCount = computed(() => filteredResults.value?.reduce((acc, result) => acc + result.warningCount, 0) ?? 0)
 
@@ -53,23 +54,22 @@ function launch(file: string) {
   <AppHeader />
 
   <main v-if="status === 'success'" box-="square contain:!top">
-    <div class="flex justify-between mx-[1ch]">
+    <div class="flex justify-between mx-[1ch] mb-[1lh]">
       <input v-model="filterVal" placeholder="Filter by file name. eg:*.ts" class="w-[40ch] mr-[1ch]">
 
-      <div is-="badge" variant-="background0">
-        <span class="dark:text-yellow-400 text-yellow-600 mr-[1ch]">&#xf071; {{ totalWarningCount }}</span>
-
+      <div is-="badge" variant-="background0" class="flex items-center gap-[1ch]">
+        <span>&#xf15b; {{ totalFileCount }}</span>
         <span class="dark:text-red-400 text-red-600">&#xf530; {{ totalErrorCount }}</span>
+        <span class="dark:text-yellow-400 text-yellow-600">&#xf071; {{ totalWarningCount }}</span>
       </div>
     </div>
 
-    <section v-for="result in filteredResults" :key="result.relativePath" box-="square contain:!top" class="m-[1ch] result-box" @click="launch(result.filePath)">
+    <section v-for="result in filteredResults" :key="result.relativePath" box-="square contain:!top" class="mx-[1ch] result-box" @click="launch(result.filePath)">
       <div class="flex justify-between">
         <FileBadge :relative-path="result.relativePath" :full-path="result.filePath" :ext="result.ext" />
         <div is-="badge" variant-="background0">
-          <span class="dark:text-yellow-400 text-yellow-600 mr-[1ch]">&#xf071; {{ result.warningCount }}</span>
-
-          <span class="dark:text-red-400 text-red-600">&#xf530; {{ result.errorCount }}</span>
+          <span class="dark:text-red-400 text-red-600 mr-[1ch]">&#xf530; {{ result.errorCount }}</span>
+          <span class="dark:text-yellow-400 text-yellow-600">&#xf071; {{ result.warningCount }}</span>
         </div>
       </div>
 
@@ -102,10 +102,6 @@ function launch(file: string) {
                   <span>
                     [ <span class="text-xs" :class="message.severity === 2 ? 'group-hover:text-red-800! group-hover:dark:text-red-500!' : 'group-hover:text-yellow-600! group-hover:dark:text-yellow-400!'">{{ message.severity === 2 ? '&#xf530;' : '&#xf071;' }}</span> {{ message.ruleId }} ]
                   </span>
-
-                  <!-- <span :class="message.severity === 2 ? 'text-red-800 dark:text-red-900' : 'text-yellow-600 dark:text-yellow-400'">
-                    {{ message.severity === 2 ? '&#xf530;' : '&#xf071;' }}
-                  </span> -->
                 </div>
               </div>
             </template>
