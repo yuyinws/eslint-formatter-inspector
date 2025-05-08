@@ -7,13 +7,15 @@
 [![bundle][bundle-src]][bundle-href]
 [![License][license-src]][license-href]
 
-An interactive tool to inspect ESLint formatter on the browser.
+Browser-based interactive tool for inspecting ESLint formatter.
 
 ## Features
 
-- Terminal-like User Interface.
-- Launch Editor support.
-- Glob patterns search support.
+- 🖥️ Terminal-style UI.
+- 🌓 Multi-theme support.
+- 🌈 Code highlight.
+- 🚀 Launch Editor support.
+- 🔍 Glob patterns search support.
 
 ## Installation
 

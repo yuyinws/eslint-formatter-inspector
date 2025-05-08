@@ -79,7 +79,8 @@ function launch(file: string) {
         </div>
         <div class="leading-none w-full">
           <Shiki
-            :code="getCodeFromSource(result.source!, line)" @click.stop="launch(`${result.filePath}:${line}`)"
+            :code="getCodeFromSource(result.source!, line)" :ext="result.ext"
+            @click.stop="launch(`${result.filePath}:${line}`)"
           />
 
           <div class="text-sm relative w-screen" :style="{ minHeight: calculateErrorHeight(messages) }">

@@ -2,7 +2,7 @@
   "name": "eslint-formatter-i",
   "type": "module",
   "version": "0.0.4",
-  "description": "_description_",
+  "description": "Browser-based interactive tool for inspecting ESLint formatter.",
   "author": "Leo <https://github.com/yuyinws>",
   "license": "MIT",
   "homepage": "https://github.com/yuyinws/eslint-formatter-i#readme",
@@ -12,9 +12,9 @@
   },
   "bugs": "https://github.com/yuyinws/eslint-formatter-i/issues",
   "keywords": [
-    "eslint-formatter",
+    "eslintformatter",
     "eslint",
-    "formatter"
+    "eslint-formatter"
   ],
   "sideEffects": false,
   "exports": {
