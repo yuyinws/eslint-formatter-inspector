@@ -1,15 +1,15 @@
-/* eslint-disable no-console */
 import type { ESLint, Linter } from 'eslint'
-import { readFile, stat } from 'node:fs/promises'
-import { cwd } from 'node:process'
+import { existsSync } from 'node:fs'
+import { cp, mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises'
+import { cwd, env } from 'node:process'
 import { fileURLToPath } from 'node:url'
 import c from 'ansis'
+import { consola } from 'consola'
 import { getPort } from 'get-port-please'
 import { getQuery, H3, serve, serveStatic } from 'h3'
 import launch from 'launch-editor'
 import { lookup } from 'mrmime'
 import { dirname, extname, join, relative, resolve } from 'pathe'
-import { MARK_INFO } from './constants'
 
 export function processESLintResults(result: ESLint.LintResult[]) {
   result = result.filter(item => item.errorCount > 0 || item.warningCount > 0)
@@ -46,55 +46,71 @@ export function processESLintResults(result: ESLint.LintResult[]) {
 }
 
 async function formatter(result: ESLint.LintResult[]): Promise<void> {
-  const app = new H3()
-
+  const INSPECTOR_MODE = env.INSPECTOR_MODE
   const clientDir = resolve(dirname(fileURLToPath(import.meta.url)), './client/public')
-
-  app.use('/api/payload.json', () => {
-    return processESLintResults(result)
-  })
-
-  app.use('/api/launch', async (event) => {
-    try {
-      const query = getQuery(event)
-      if (query.file) {
-        launch(query.file)
-        return {
-          status: 'success',
-        }
-      }
+  if (INSPECTOR_MODE === 'build') {
+    consola.start('Building static ESLint formatter inspector...')
+    const outputDir = resolve(cwd(), '.eslint-formatter-inspector')
+    if (existsSync(outputDir)) {
+      await rm(outputDir, { recursive: true })
     }
-    catch (error) {
-      return {
-        status: 'error',
-        error: String(error),
-      }
-    }
-  })
+    await mkdir(outputDir, { recursive: true })
+    await cp(clientDir, outputDir, { recursive: true })
+    await mkdir(resolve(outputDir, 'api'), { recursive: true })
+    await writeFile(resolve(outputDir, 'api', 'payload.json'), JSON.stringify(processESLintResults(result), null, 2), 'utf-8')
 
-  app.use('/**', (event) => {
-    return serveStatic(event, {
-      indexNames: ['/index.html'],
-      getContents: id => readFile(join(clientDir, id)),
-      getMeta: async (id) => {
-        const stats = await stat(join(clientDir, id)).catch(() => {})
-        if (stats?.isFile()) {
+    consola.success(`Built to ${c.cyan(relative(cwd(), outputDir))}`)
+    consola.success(`You can preview this build using ${c.green`npx serve ${relative(cwd(), outputDir)}`}`)
+  }
+  else {
+    const app = new H3()
+
+    app.use('/api/payload.json', () => {
+      return processESLintResults(result)
+    })
+
+    app.use('/api/launch', async (event) => {
+      try {
+        const query = getQuery(event)
+        if (query.file) {
+          launch(query.file)
           return {
-            size: stats.size,
-            mtime: stats.mtimeMs,
-            type: lookup(id),
+            status: 'success',
           }
         }
-      },
-      fallthrough: true,
+      }
+      catch (error) {
+        return {
+          status: 'error',
+          error: String(error),
+        }
+      }
     })
-  })
 
-  const port = await getPort({ port: 3777, portRange: [3777, 4000] })
+    app.use('/**', (event) => {
+      return serveStatic(event, {
+        indexNames: ['/index.html'],
+        getContents: id => readFile(join(clientDir, id)),
+        getMeta: async (id) => {
+          const stats = await stat(join(clientDir, id)).catch(() => {})
+          if (stats?.isFile()) {
+            return {
+              size: stats.size,
+              mtime: stats.mtimeMs,
+              type: lookup(id),
+            }
+          }
+        },
+        fallthrough: true,
+      })
+    })
 
-  serve(app, { port, silent: true })
+    const port = await getPort({ port: 3777, portRange: [3777, 4000] })
 
-  console.log(MARK_INFO, `Starting ESLint formatter inspector at`, c.green`http://localhost:${port}`, '\n')
+    serve(app, { port, silent: true })
+
+    consola.info(`Starting ESLint formatter inspector at`, c.green`http://localhost:${port}`, '\n')
+  }
 }
 
 export default formatter
