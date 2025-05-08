@@ -6,6 +6,7 @@ const { relativePath, ext } = defineProps<{
 }>()
 
 const fileIcon = computed(() => {
+  // https://www.nerdfonts.com/cheat-sheet
   switch (ext) {
     case '.ts':
       return `&#xe69d;`
@@ -21,6 +22,12 @@ const fileIcon = computed(() => {
       return `&#xeb0f;`
     case '.svelte':
       return `&#xe8b7;`
+    case '.md':
+      return `&#xeeab;`
+    case '.mdx':
+      return `&#xeeab;`
+    case '.css':
+      return `&#xe749;`
     default:
       return `&#xf15b;`
   }

@@ -13,8 +13,8 @@
     "release": "bumpp -r && pnpm -r publish",
     "typecheck": "vue-tsc --noEmit",
     "prepare": "nr --filter client-app postinstall && npx simple-git-hooks",
-    "test": "eslint -c eslint.fixtures.config.js -f i tests/fixtures",
-    "build:static": "nr build && INSPECTOR_MODE=build eslint -c eslint.fixtures.config.js -f i tests/fixtures"
+    "start": "eslint -c eslint.fixtures.config.js -f i tests/fixtures",
+    "build:static": "nr build && INSPECTOR_MODE=build nr start"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.12.1",
