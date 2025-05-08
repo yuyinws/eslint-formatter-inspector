@@ -1,4 +1,4 @@
-<img src="./packages/client/public/favicon.svg" width="100" height="100"><br>
+<img src="https://eslint-formatter-inspector.vercel.app/favicon.svg" width="100" height="100"><br>
 
 # ESLint Formatter Inspector
 
