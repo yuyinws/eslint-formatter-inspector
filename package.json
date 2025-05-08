@@ -14,7 +14,7 @@
     "typecheck": "vue-tsc --noEmit",
     "prepare": "nr --filter client-app postinstall && npx simple-git-hooks",
     "test": "eslint -c eslint.fixtures.config.js -f i tests/fixtures",
-    "build:static": "INSPECTOR_MODE=build nr test"
+    "build:static": "nr build & INSPECTOR_MODE=build eslint -c eslint.fixtures.config.js -f i tests/fixtures"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.12.1",
