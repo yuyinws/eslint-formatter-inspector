@@ -23,6 +23,7 @@
     "eslint": "^9.26.0",
     "eslint-formatter-i": "workspace:*",
     "eslint-formatter-mo": "^2.3.0",
+    "eslint-plugin-format": "^1.0.1",
     "lint-staged": "^15.5.1",
     "pnpm": "^10.10.0",
     "simple-git-hooks": "^2.13.0",
