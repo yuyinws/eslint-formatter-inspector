@@ -7,6 +7,8 @@
 [![bundle][bundle-src]][bundle-href]
 [![License][license-src]][license-href]
 
+![demo](https://static.yuy1n.io/eslint-formatter-inspector-demo.png)
+
 Browser-based interactive tool for inspecting ESLint formatter.
 
 ## Features
