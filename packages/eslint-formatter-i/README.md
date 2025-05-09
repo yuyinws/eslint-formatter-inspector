@@ -9,7 +9,7 @@
 
 ![demo](https://static.yuy1n.io/eslint-formatter-inspector-demo.png)
 
-Browser-based interactive tool for inspecting ESLint formatter.
+An interactive tool for inspecting ESLint formatter in the browser.
 
 ## Features
 
