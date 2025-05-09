@@ -20,7 +20,8 @@ An interactive tool for inspecting ESLint formatter in the browser.
 ## Features
 
 - 🖥️ Terminal-style UI.
-- 🌓 Multi-theme support.
+- 🌓 Multi-theme switch.
+- 📦 Static Build.
 - 🌈 Code highlight.
 - 🚀 Launch Editor support.
 - 🔍 Glob patterns search support.
