@@ -24,10 +24,6 @@ function getLang(ext: string) {
       return 'jsonc'
     case '.md':
       return 'markdown'
-    case '.vue':
-      return 'vue'
-    case '.svelte':
-      return 'svelte'
     case '.mdx':
       return 'mdx'
     default:
