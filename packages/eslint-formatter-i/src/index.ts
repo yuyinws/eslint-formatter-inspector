@@ -47,6 +47,13 @@ export function processESLintResults(result: ESLint.LintResult[]) {
 }
 
 async function formatter(result: ESLint.LintResult[]): Promise<void> {
+  const totalWarningCount = result.reduce((acc, item) => acc + item.warningCount, 0)
+  const totalErrorCount = result.reduce((acc, item) => acc + item.errorCount, 0)
+
+  if (totalWarningCount === 0 && totalErrorCount === 0) {
+    return
+  }
+
   const INSPECTOR_MODE = env.INSPECTOR_MODE
   const clientDir = resolve(dirname(fileURLToPath(import.meta.url)), './client/public')
   if (INSPECTOR_MODE === 'build') {
