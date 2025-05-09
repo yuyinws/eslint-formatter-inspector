@@ -4,12 +4,18 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![bundle][bundle-src]][bundle-href]
-[![License][license-src]][license-href]
 
 ![demo](https://static.yuy1n.io/eslint-formatter-inspector-demo.png)
 
+<p align='center'>
 An interactive tool for inspecting ESLint formatter in the browser.
+</p>
+
+<p align='center'>
+  <a href='https://eslint-formatter-inspector.vercel.app/'>
+    Live Demo
+  </a>
+</p>
 
 ## Features
 
@@ -54,8 +60,6 @@ INSPECTOR_MODE=build eslint [patterns] -f i
 [npm-version-href]: https://npmjs.com/package/eslint-formatter-i
 [npm-downloads-src]: https://img.shields.io/npm/dm/eslint-formatter-i?style=flat&colorA=080f12&colorB=1fa669
 [npm-downloads-href]: https://npmjs.com/package/eslint-formatter-i
-[bundle-src]: https://img.shields.io/bundlephobia/minzip/eslint-formatter-i?style=flat&colorA=080f12&colorB=1fa669&label=minzip
-[bundle-href]: https://bundlephobia.com/result?p=eslint-formatter-i
 [license-src]: https://img.shields.io/github/license/yuyinws/eslint-formatter-inspector.svg?style=flat&colorA=080f12&colorB=1fa669
 [license-href]: https://github.com/yuyinws/eslint-formatter-inspector/blob/main/LICENSE
 
