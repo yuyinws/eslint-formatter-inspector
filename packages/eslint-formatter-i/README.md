@@ -12,7 +12,7 @@ An interactive tool for inspecting ESLint formatter in the browser.
 </p>
 
 <p align='center'>
-  <a href='https://eslint-formatter-inspector.vercel.app/'>
+  <a target='_blank' href='https://eslint-formatter-inspector.vercel.app/'>
     Live Demo
   </a>
 </p>
