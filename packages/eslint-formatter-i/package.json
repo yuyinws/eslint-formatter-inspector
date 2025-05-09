@@ -1,7 +1,7 @@
 {
   "name": "eslint-formatter-i",
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Browser-based interactive tool for inspecting ESLint formatter.",
   "author": "Leo <https://github.com/yuyinws>",
   "license": "MIT",
