@@ -2,7 +2,7 @@
   "type": "module",
   "version": "0.1.5",
   "private": true,
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.11.0",
   "scripts": {
     "build": "nr --filter eslint-formatter-i build",
     "build:client": "nr --filter client-app build",
@@ -17,18 +17,18 @@
     "build:static": "nr build && INSPECTOR_MODE=build nr start"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.12.1",
+    "@antfu/eslint-config": "^4.13.0",
     "@antfu/ni": "^24.3.0",
-    "@types/node": "^22.15.12",
+    "@types/node": "^22.15.17",
     "bumpp": "^10.1.0",
     "eslint": "^9.26.0",
     "eslint-formatter-i": "workspace:*",
     "eslint-formatter-mo": "^2.3.0",
     "eslint-plugin-format": "^1.0.1",
-    "lint-staged": "^15.5.1",
-    "pnpm": "^10.10.0",
+    "lint-staged": "^16.0.0",
+    "pnpm": "^10.11.0",
     "simple-git-hooks": "^2.13.0",
-    "tsdown": "^0.11.0",
+    "tsdown": "^0.11.9",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.10"

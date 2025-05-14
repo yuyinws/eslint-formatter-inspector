@@ -31,7 +31,7 @@
     "start": "tsx src/test.ts"
   },
   "dependencies": {
-    "ansis": "^3.17.0",
+    "ansis": "^4.0.0",
     "consola": "^3.4.2",
     "get-port-please": "^3.1.2",
     "h3": "npm:h3-nightly@2x",
